@@ -5,20 +5,20 @@
              xmlns:model="clr-namespace:BluetoothLE_App.Models"
               x:Name="View">
     <ScrollView>
-        <VerticalStackLayout
+        <VerticalStackLayout VerticalOptions="Center"
             BindableLayout.ItemsSource="{Binding Source={x:Reference View},
                                                  Path=ItemsSource}"
             Margin="10">
             <BindableLayout.ItemTemplate>
                 <DataTemplate x:DataType="model:NavigationButtonItem">
 
-                    <Button BorderColor="{StaticResource Tertiary}"
-                        Text="{Binding Name}"
+                    <Button BorderColor="Red"
+                        Text="{Binding Name}" BackgroundColor="Red" FontAttributes="Bold"
                         Command="{Binding Source={x:Reference View},
                                           Path=Command}"
                         CommandParameter="{Binding Path}"
                         TextColor="{StaticResource White}"
-                        Margin="0,10" />
+                      FontSize="20"  Margin="0,10" />
                 </DataTemplate>
             </BindableLayout.ItemTemplate>
         </VerticalStackLayout>

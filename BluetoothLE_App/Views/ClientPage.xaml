@@ -36,7 +36,7 @@
         </CollectionView>
 
         <ActivityIndicator
-            Grid.Row="2"
+            Grid.Row="2" Color="#2795F5"
             IsRunning="{Binding IsScanning}"
             IsVisible="{Binding IsScanning}" />
     </Grid>
