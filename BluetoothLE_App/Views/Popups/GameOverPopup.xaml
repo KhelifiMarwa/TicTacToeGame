@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<abstractions:BasePopup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BluetoothLE_App.Views.Popups.GameOverPopup"
+             xmlns:abstractions="clr-namespace:BluetoothLE_App.Abstractions"
+           x:TypeArguments="helpers:DialogReturnValue"
+           xmlns:helpers="clr-namespace:BluetoothLE_App.Helpers"
+           xmlns:viewModel="clr-namespace:BluetoothLE_App.ViewModel"
+           x:DataType="viewModel:GameOverViewModel"
+           CloseWhenBackgroundIsClicked="False">
+    <Border
+        Margin="10,0"
+        VerticalOptions="Center"
+        Stroke="Transparent">
+
+
+        <Grid
+            BackgroundColor="{StaticResource Primary}"
+            x:Name="MainContent"
+            RowDefinitions="Auto,Auto,Auto,Auto"
+            VerticalOptions="Center">
+
+
+            <Label
+                Grid.Row="0"
+                HorizontalOptions="Center"
+                FontSize="20"
+                Text="{Static helpers:Constants+Texts.GameOverPopupTitle}" />
+
+            <Label
+                Grid.Row="2"
+                HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Static helpers:Constants+Texts.HighScoreLabel}" />
+                        <Span Text="{Binding Winner}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Grid
+                ColumnDefinitions="*,*"
+                Margin="5"
+                ColumnSpacing="2"
+                HorizontalOptions="Fill"
+                Grid.Row="3">
+
+                <Button
+                    BackgroundColor="{StaticResource Secondary}"
+                    IsEnabled="{Binding IsEnableRetry}"
+                    Text="{Static helpers:Constants+Texts.Retry}"
+                    Clicked="OnPositiveButtonClicked" />
+
+                <Button
+                    BackgroundColor="{StaticResource Secondary}"
+                    Grid.Column="1"
+                    Text="{Static helpers:Constants+Texts.MainMenu}"
+                    Clicked="OnNegativeButtonClicked" />
+            </Grid>
+        </Grid>
+    </Border>
+</abstractions:BasePopup>

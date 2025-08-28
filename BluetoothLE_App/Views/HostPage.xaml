@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BluetoothLE_App.Views.HostPage"
+               xmlns:viewModel="clr-namespace:BluetoothLE_App.ViewModel"
+               x:DataType="viewModel:HostViewModel"
+               xmlns:helpers="clr-namespace:BluetoothLE_App.Helpers"
+              Title="{x:Static helpers:Constants+Texts.ServerTitle}">
+    <VerticalStackLayout Margin="10">
+
+        <Label>
+
+            <Label.FormattedText>
+
+                <FormattedString>
+
+                    <Span Text="{x:Static helpers:Constants+Texts.ServerMessage}" />
+                    <Span Text="{Binding IsConnected}" />
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+    </VerticalStackLayout>
+</ContentPage>

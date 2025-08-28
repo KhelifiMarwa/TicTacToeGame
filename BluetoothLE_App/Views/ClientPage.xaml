@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BluetoothLE_App.Views.ClientPage"
+              xmlns:viewModel="clr-namespace:BluetoothLE_App.ViewModel"
+               x:DataType="viewModel:ClientViewModel"
+              xmlns:helpers="clr-namespace:BluetoothLE_App.Helpers"
+              Title="{x:Static helpers:Constants+Texts.ScanTitle}">
+    <Grid RowDefinitions="auto,*,auto">
+
+        <Button
+            Command="{Binding ScanToggle}"
+            Text="Scan" Margin="10"/>
+
+        <CollectionView
+            Grid.Row="1"
+            ItemsSource="{Binding Peripherals}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="x:String">
+                    <Border Margin="10,5" BackgroundColor="#F6F5FF" StrokeThickness="1"
+                        StrokeShape="RoundRectangle 12,12,12,12" >
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientViewModel}},
+                                                                         Path=SelectCommand}"
+                                CommandParameter="{Binding .}" />
+                        </Border.GestureRecognizers>
+                        <Label 
+                            Margin="5"
+                            HorizontalOptions="Center"
+                            FontSize="20"
+                            Text="{Binding .}" />
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <ActivityIndicator
+            Grid.Row="2"
+            IsRunning="{Binding IsScanning}"
+            IsVisible="{Binding IsScanning}" />
+    </Grid>
+</ContentPage>
